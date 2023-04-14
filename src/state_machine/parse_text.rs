@@ -1,4 +1,7 @@
-use super::Context;
+use super::{
+    Context,
+    StateMachine,
+};
 
 #[derive(Debug)]
 enum ParseText
@@ -12,7 +15,10 @@ enum ParseText
 
 impl Context
 {
-    pub fn parse_text(&mut self) {}
+    pub fn parse_text(&mut self) -> StateMachine
+    {
+        StateMachine::Done
+    }
 }
 
 #[cfg(test)]
@@ -25,8 +31,7 @@ mod test
     fn parse_empty()
     {
         let mut context = Context::new("");
-        context.parse_text();
-        assert!(context.chunks.is_empty());
+        assert!(matches!(context.parse_text(), StateMachine::StoreTextChunk(s) if s == ""));
     }
 
     #[test]
@@ -34,28 +39,28 @@ mod test
     {
         let input = "This is a simple sentence.";
         let mut context = Context::new(input);
-        context.parse_text();
-        assert_eq!(context.chunks.len(), 1);
-        assert!(matches!(&context.chunks[0], Chunk::TextChunk(s) if s == input));
+        assert!(matches!(context.parse_text(), StateMachine::StoreTextChunk(s) if s == input));
     }
 
     #[test]
     fn parse_text_can_be_split_with_command()
     {
         let mut context = Context::new("Calling parse text ${twice here");
-        context.parse_text();
-        context.parse_text();
-        assert_eq!(context.chunks.len(), 2);
-        assert!(matches!(&context.chunks[0], Chunk::TextChunk(s) if s == "Calling parse text "));
-        assert!(matches!(&context.chunks[1], Chunk::TextChunk(s) if s == "twice here"));
+        assert!(matches!(
+            &context.parse_text(),
+            StateMachine::StoreTextChunk(s) if s == "Calling parse text ",
+        ));
+        assert!(
+            matches!(&context.parse_text(), StateMachine::StoreTextChunk(s) if s == "twice here")
+        );
     }
 
     #[test]
     fn parse_text_with_dollar_signs_and_brackets()
     {
         let mut context = Context::new("$$}{$}{{$${}}$}{$");
-        context.parse_text();
-        assert_eq!(context.chunks.len(), 1);
-        assert!(matches!(&context.chunks[0], Chunk::TextChunk(s) if s == "$$}{$}{{$"));
+        assert!(
+            matches!(context.parse_text(), StateMachine::StoreTextChunk(s) if s == "$$}{$}{{$")
+        );
     }
 }

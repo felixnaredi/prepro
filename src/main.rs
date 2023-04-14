@@ -1,14 +1,10 @@
-use crate::state_machine::Context;
-
 mod state_machine;
+
+use crate::state_machine::parse_prepro;
 
 fn main() -> Result<(), Box<dyn std::error::Error>>
 {
-    let mut context = Context::new("hello");
-
-    context.parse_text();
-
-    println!("Hello, world!");
+    println!("{}", parse_prepro("hello ${ echo world }")?);
 
     Ok(())
 }
