@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-14T12:38:39.777Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/111.0" etag="usIP2onUGyyI1Hzu17QG" version="21.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-14T12:45:54.909Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/111.0" etag="6Fwl44U_W2HusYvxT1_3" version="21.1.7" type="github">
   <diagram name="Final State Machine" id="Ba7436QLJbThtLxYU6n6">
-    <mxGraphModel dx="1236" dy="737" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1442" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -205,9 +205,6 @@
         <mxCell id="6i5JkS_G5Znk1qNWYGiz-33" value="if &lt;i&gt;c&lt;/i&gt; is &#39;$&#39;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;container=0;" parent="i_3fjbcKc8RPNMoTjh3c-45" vertex="1">
           <mxGeometry x="260" y="240" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="6i5JkS_G5Znk1qNWYGiz-35" value="if not &#39;{&#39; send &lt;i&gt;c&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;container=0;" parent="i_3fjbcKc8RPNMoTjh3c-45" vertex="1">
-          <mxGeometry x="355" y="160" width="60" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="6i5JkS_G5Znk1qNWYGiz-36" value="send &lt;i&gt;c&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;container=0;" parent="i_3fjbcKc8RPNMoTjh3c-45" vertex="1">
           <mxGeometry x="98" y="90" width="60" height="30" as="geometry" />
         </mxCell>
@@ -304,7 +301,7 @@
           <mxGeometry x="430" y="230" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="i_3fjbcKc8RPNMoTjh3c-47" value="" style="group" vertex="1" connectable="0" parent="i_3fjbcKc8RPNMoTjh3c-45">
-          <mxGeometry x="434" y="66" width="210" height="124" as="geometry" />
+          <mxGeometry x="434" y="66" width="210" height="134" as="geometry" />
         </mxCell>
         <mxCell id="i_3fjbcKc8RPNMoTjh3c-41" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;perimeterSpacing=0;glass=0;shadow=0;" vertex="1" parent="i_3fjbcKc8RPNMoTjh3c-47">
           <mxGeometry width="210" height="124" as="geometry" />
@@ -326,6 +323,9 @@
         </mxCell>
         <mxCell id="6i5JkS_G5Znk1qNWYGiz-43" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;c&lt;/i&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=12;container=0;" parent="i_3fjbcKc8RPNMoTjh3c-46" vertex="1">
           <mxGeometry y="5" width="24" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6i5JkS_G5Znk1qNWYGiz-35" value="&lt;div&gt;if &lt;i&gt;c&lt;/i&gt; is not [ &#39;{&#39;, &#39;$&#39; ]&lt;br&gt;&lt;/div&gt;&lt;div&gt;send &lt;i&gt;c&lt;/i&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;container=0;" parent="i_3fjbcKc8RPNMoTjh3c-45" vertex="1">
+          <mxGeometry x="260" y="173" width="100" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
