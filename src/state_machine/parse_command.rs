@@ -4,17 +4,51 @@ use super::{Context, StateMachine};
 enum ParseCommand
 {
     GetChar,
-    IncrementDepth,
-    DecrementDepth,
-    Append(char),
     RightBracket,
+    DecrementDepth,
+    IncrementDepth,
+    Append(char),
 }
 
 impl Context
 {
     pub fn parse_command(&mut self) -> StateMachine
     {
-        StateMachine::Done
+        use ParseCommand::*;
+
+        let mut state = GetChar;
+        let mut output = String::new();
+        let mut depth = 0;
+
+        loop {
+            match state {
+                GetChar => match self.read_char() {
+                    Some('{') => state = IncrementDepth,
+                    Some('}') => state = RightBracket,
+                    Some(c) => state = Append(c),
+                    None => return StateMachine::NoClosingBracket,
+                },
+                RightBracket => {
+                    if depth > 0 {
+                        state = DecrementDepth;
+                    } else {
+                        return StateMachine::StoreCommandChunk(output);
+                    }
+                },
+                DecrementDepth => {
+                    depth -= 1;
+                    state = Append('}');
+                },
+                IncrementDepth => {
+                    depth += 1;
+                    state = Append('{');
+                },
+                Append(c) => {
+                    output.push(c);
+                    state = GetChar;
+                }
+            }
+        }
     }
 }
 
